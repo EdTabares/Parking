@@ -18,7 +18,8 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/espacios")
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://parking-front.onrender.com", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.OPTIONS})
 public class EspacioController {
 
     @Autowired
