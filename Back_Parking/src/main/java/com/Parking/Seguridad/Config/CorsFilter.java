@@ -1,4 +1,4 @@
-package com.tuapp.config;
+package com.Parking.Seguridad.Config;
 
 import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;
@@ -17,6 +17,8 @@ public class CorsFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
         HttpServletResponse httpResponse = (HttpServletResponse) response;
+        System.out.println("Ejecutando filtro CORS...");
+
         httpResponse.setHeader("Access-Control-Allow-Origin", "https://parking-front.onrender.com"); // Cambia con la URL de tu frontend
         httpResponse.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
         httpResponse.setHeader("Access-Control-Allow-Headers", "*");
