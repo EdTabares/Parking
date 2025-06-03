@@ -1,0 +1,65 @@
+<div class="container text-center">
+    <br>
+    <h1>Histórico de Reservas</h1>
+    <br>
+
+    <label class="form-select-label" for="fechaSeleccionada">Seleccione una fecha</label>
+    <input type="date" [(ngModel)]="fechaSeleccionada" id="fechaSeleccionada" class="form-control">
+    <br>
+
+    <button class="btn btn-primary" (click)="filtrarPorFecha()">Filtrar</button>
+    <button class="btn btn-secondary" (click)="borrarFiltro()">Borrar Filtro</button>
+    <br>
+    <br>
+
+
+    <div *ngIf="success" style="color:green">{{ success }}</div>
+    <div *ngIf="error" style="color:red">{{ error }}</div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Fecha Liquidación</th>
+                <th>Placa</th>
+                <th>Tipo Vehículo</th>
+                <th>Valor Pagado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let reserva of historicoFiltrado">
+                <td>{{ formatFecha(reserva.fechaLiquidacion) }}</td>
+                <td>{{ reserva.placa }}</td>
+                <td>{{ reserva.tipoVehiculo }}</td>
+                <td>{{ formatCurrency(reserva.valor) }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+<h3>Total Facturado</h3>
+<p class="fw-bold">Total: {{ formatCurrency(totalFacturado) }}</p>
+
+
+
+<h3>Porcentaje de Vehículos</h3>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Tipo Vehículo</th>
+      <th>Cantidad</th>
+      <th>Porcentaje</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let porcentaje of porcentajeVehiculos">
+      <td>{{ porcentaje.tipoVehiculo }}</td>
+      <td>{{ porcentaje.cantidad }}</td>
+      <td>{{ porcentaje.porcentaje }}%</td>
+    </tr>
+  </tbody>
+</table>
+
+<button class="btn btn-secondary" (click)="volver()">Volver</button>
+<button class="btn btn-success" (click)="exportXML()">Exportar a XML</button>
+
+</div>
+
